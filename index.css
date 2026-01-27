@@ -1,0 +1,158 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#fde2e4,#fff1f2);
+  overflow:hidden;
+}
+
+h1{
+  margin-bottom:20px;
+  color:#8b1e3f;
+  text-align:center;
+}
+
+.bouquet{
+  position:relative;
+  width:300px;
+  height:360px;
+  transition:transform .4s ease;
+}
+
+/* 💌 MENSAJES */
+.msg{
+  position:absolute;
+  top:45%;
+  transform:translateY(-50%);
+  font-size:15px;
+  font-weight:600;
+  color:#7a1f3d;
+  opacity:0;
+  transition:.4s;
+  max-width:130px;
+  text-align:center;
+}
+
+.msg.left{ left:-150px; }
+.msg.right{ right:-150px; }
+
+.msg.show{ opacity:1; }
+
+/* 🌹 ROSAS */
+.flower{
+  position:absolute;
+  width:80px;
+  height:80px;
+}
+
+.rose .petal{
+  position:absolute;
+  width:45px;
+  height:60px;
+  background:radial-gradient(circle,#ff5c77,#9b0f22);
+  border-radius:60% 60% 40% 40%;
+  left:18px;
+  top:5px;
+  transform-origin:50% 90%;
+}
+
+.pink .petal{
+  background:radial-gradient(circle,#ffc1d6,#e26c9f);
+}
+
+.rose .petal:nth-child(2){transform:rotate(20deg);}
+.rose .petal:nth-child(3){transform:rotate(55deg);}
+.rose .petal:nth-child(4){transform:rotate(95deg);}
+.rose .petal:nth-child(5){transform:rotate(140deg);}
+.rose .petal:nth-child(6){transform:rotate(175deg);}
+
+.rose .center{
+  position:absolute;
+  width:26px;
+  height:26px;
+  background:#7b0c1a;
+  border-radius:50%;
+  left:27px;
+  top:28px;
+}
+
+/* 📍 POSICIÓN RAMO — SUBIDAS */
+.r1{ left:25px; top:75px; }
+.r2{ right:25px; top:75px; }
+.r3{ left:110px; top:130px; }
+.r4{ left:110px; top:10px; }
+
+
+/* 🌿 TALLOS */
+.stems{
+  position:absolute;
+  bottom:-18px;
+  left:145px;
+  width:10px;
+  height:180px;
+  background:linear-gradient(#4caf50,#1b5e20);
+  border-radius:6px;
+}
+
+/* TALLO IZQUIERDO */
+.stems::before{
+  content:'';
+  position:absolute;
+  width:10px;
+  height:165px;
+  background:inherit;
+  left:-32px;
+  top:5px;
+  transform:rotate(-18deg);
+  border-radius:6px;
+}
+
+/* TALLO DERECHO */
+.stems::after{
+  content:'';
+  position:absolute;
+  width:10px;
+  height:195px;
+  background:inherit;
+  left:32px;
+  top:-15px;
+  transform:rotate(16deg);
+  border-radius:6px;
+}
+
+/* 🍃 HOJAS */
+.leaf{
+  position:absolute;
+  width:65px;
+  height:35px;
+  background:#2e7d32;
+  border-radius:0 100% 0 100%;
+}
+
+.l1{ left:35px; bottom:55px; transform:rotate(-35deg);}
+.l2{ right:35px; bottom:55px; transform:rotate(35deg);}
+
+button{
+  margin-top:28px;
+  padding:12px 24px;
+  border:none;
+  border-radius:30px;
+  background:#e11d48;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,.25);
+}
+
+button:active{
+  transform:scale(.95);
+}
