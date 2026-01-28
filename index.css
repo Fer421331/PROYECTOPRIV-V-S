@@ -1,158 +1,478 @@
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Segoe UI',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
 }
 
-body{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#fde2e4,#fff1f2);
-  overflow:hidden;
+body {
+    background: linear-gradient(135deg, #fff0f5 0%, #fffaf0 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
-h1{
-  margin-bottom:20px;
-  color:#8b1e3f;
-  text-align:center;
+.header {
+    text-align: center;
+    margin: 20px 0;
+    padding: 25px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid #ffb6c1;
 }
 
-.bouquet{
-  position:relative;
-  width:300px;
-  height:360px;
-  transition:transform .4s ease;
+.title {
+    font-size: 3rem;
+    color: #c71585;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
 }
 
-/* 💌 MENSAJES */
-.msg{
-  position:absolute;
-  top:45%;
-  transform:translateY(-50%);
-  font-size:15px;
-  font-weight:600;
-  color:#7a1f3d;
-  opacity:0;
-  transition:.4s;
-  max-width:130px;
-  text-align:center;
+.title::before, .title::after {
+    content: "❤";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #ff69b4;
 }
 
-.msg.left{ left:-150px; }
-.msg.right{ right:-150px; }
-
-.msg.show{ opacity:1; }
-
-/* 🌹 ROSAS */
-.flower{
-  position:absolute;
-  width:80px;
-  height:80px;
+.title::before {
+    left: -50px;
 }
 
-.rose .petal{
-  position:absolute;
-  width:45px;
-  height:60px;
-  background:radial-gradient(circle,#ff5c77,#9b0f22);
-  border-radius:60% 60% 40% 40%;
-  left:18px;
-  top:5px;
-  transform-origin:50% 90%;
+.title::after {
+    right: -50px;
 }
 
-.pink .petal{
-  background:radial-gradient(circle,#ffc1d6,#e26c9f);
+.bouquet-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.rose .petal:nth-child(2){transform:rotate(20deg);}
-.rose .petal:nth-child(3){transform:rotate(55deg);}
-.rose .petal:nth-child(4){transform:rotate(95deg);}
-.rose .petal:nth-child(5){transform:rotate(140deg);}
-.rose .petal:nth-child(6){transform:rotate(175deg);}
-
-.rose .center{
-  position:absolute;
-  width:26px;
-  height:26px;
-  background:#7b0c1a;
-  border-radius:50%;
-  left:27px;
-  top:28px;
+/* Persona sosteniendo el ramo */
+.person {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 250px;
+    z-index: 5;
 }
 
-/* 📍 POSICIÓN RAMO — SUBIDAS */
-.r1{ left:25px; top:75px; }
-.r2{ right:25px; top:75px; }
-.r3{ left:110px; top:130px; }
-.r4{ left:110px; top:10px; }
-
-
-/* 🌿 TALLOS */
-.stems{
-  position:absolute;
-  bottom:-18px;
-  left:145px;
-  width:10px;
-  height:180px;
-  background:linear-gradient(#4caf50,#1b5e20);
-  border-radius:6px;
+.person-body {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 130px;
+    background: linear-gradient(to bottom, #4682b4, #5a8db6);
+    border-radius: 40px 40px 0 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* TALLO IZQUIERDO */
-.stems::before{
-  content:'';
-  position:absolute;
-  width:10px;
-  height:165px;
-  background:inherit;
-  left:-32px;
-  top:5px;
-  transform:rotate(-18deg);
-  border-radius:6px;
+.person-head {
+    position: absolute;
+    bottom: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: #ffdab9;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #4682b4;
 }
 
-/* TALLO DERECHO */
-.stems::after{
-  content:'';
-  position:absolute;
-  width:10px;
-  height:195px;
-  background:inherit;
-  left:32px;
-  top:-15px;
-  transform:rotate(16deg);
-  border-radius:6px;
+.person-arm {
+    position: absolute;
+    bottom: 90px;
+    width: 60px;
+    height: 15px;
+    background: linear-gradient(to bottom, #4682b4, #5a8db6);
+    border-radius: 10px;
 }
 
-/* 🍃 HOJAS */
-.leaf{
-  position:absolute;
-  width:65px;
-  height:35px;
-  background:#2e7d32;
-  border-radius:0 100% 0 100%;
+.left-arm {
+    left: -30px;
+    transform: rotate(-30deg);
 }
 
-.l1{ left:35px; bottom:55px; transform:rotate(-35deg);}
-.l2{ right:35px; bottom:55px; transform:rotate(35deg);}
-
-button{
-  margin-top:28px;
-  padding:12px 24px;
-  border:none;
-  border-radius:30px;
-  background:#e11d48;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,.25);
+.right-arm {
+    right: -30px;
+    transform: rotate(30deg);
 }
 
-button:active{
-  transform:scale(.95);
+/* Ramo de flores */
+.bouquet {
+    position: absolute;
+    bottom: 80px;
+    width: 280px;
+    height: 220px;
+    z-index: 4;
+    transition: transform 0.5s ease;
+}
+
+/* Flores individuales */
+.flower {
+    position: absolute;
+    transform-origin: bottom center;
+}
+
+.flower-red {
+    color: #dc143c;
+}
+
+.flower-pink {
+    color: #ff69b4;
+}
+
+.flower-center {
+    width: 25px;
+    height: 25px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.flower-petal {
+    position: absolute;
+    width: 35px;
+    height: 45px;
+    border-radius: 50%;
+    top: 5px;
+}
+
+.petal-1 {
+    transform: translateX(-50%) rotate(0deg);
+    left: 50%;
+}
+
+.petal-2 {
+    transform: translateX(-50%) rotate(72deg);
+    left: 50%;
+}
+
+.petal-3 {
+    transform: translateX(-50%) rotate(144deg);
+    left: 50%;
+}
+
+.petal-4 {
+    transform: translateX(-50%) rotate(216deg);
+    left: 50%;
+}
+
+.petal-5 {
+    transform: translateX(-50%) rotate(288deg);
+    left: 50%;
+}
+
+.flower-stem {
+    position: absolute;
+    width: 6px;
+    height: 120px;
+    background: linear-gradient(to bottom, #228b22, #32cd32);
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+.flower-leaf {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background-color: #228b22;
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.leaf-left {
+    top: 80px;
+    left: 0;
+}
+
+.leaf-right {
+    top: 60px;
+    right: 0;
+}
+
+/* Papel de envolver el ramo */
+.bouquet-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(45deg, #ffd700, #fffacd);
+    border-radius: 20px 20px 0 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 -5px 10px rgba(0,0,0,0.1);
+}
+
+.wrapper-fold {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(45deg, #daa520, #ffd700);
+    border-radius: 20px 20px 0 0;
+    clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+}
+
+/* Botón interactivo */
+.button-container {
+    margin: 30px 0 40px;
+    text-align: center;
+}
+
+.action-btn {
+    background: linear-gradient(to right, #c71585, #db7093);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(199, 21, 133, 0.3);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(199, 21, 133, 0.4);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(199, 21, 133, 0.3);
+}
+
+.action-btn::after {
+    content: "❤";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+/* Contenedor de mensajes */
+.messages-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.messages-container.show {
+    opacity: 1;
+}
+
+.left-messages, .right-messages {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    padding: 18px 25px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.left-messages .message {
+    background: linear-gradient(to right, #c71585, #db7093);
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.right-messages .message {
+    background: linear-gradient(to left, #c71585, #db7093);
+    align-self: flex-end;
+    text-align: right;
+    border-bottom-right-radius: 0;
+}
+
+.message::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+}
+
+.left-messages .message::after {
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.right-messages .message::after {
+    right: 0;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.counter {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #c71585;
+    font-weight: 600;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 12px 25px;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Efectos de corazones */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff69b4;
+    opacity: 0;
+    animation: floatUp 3s linear forwards;
+}
+
+/* Animaciones */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); }
+}
+
+@keyframes bouquetShake {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-10px) rotate(-2deg); }
+    75% { transform: translateX(10px) rotate(2deg); }
+}
+
+.shake {
+    animation: bouquetShake 0.5s ease;
+}
+
+/* Hojas decorativas alrededor */
+.decoration-leaf {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #228b22;
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #c71585;
+    font-style: italic;
+    padding: 20px;
+    width: 100%;
+    border-top: 2px dashed #ffb6c1;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .title::before, .title::after {
+        font-size: 1.5rem;
+    }
+    
+    .title::before {
+        left: -30px;
+    }
+    
+    .title::after {
+        right: -30px;
+    }
+    
+    .bouquet-container {
+        height: 450px;
+    }
+    
+    .bouquet {
+        width: 230px;
+        height: 180px;
+    }
+    
+    .messages-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .left-messages, .right-messages {
+        width: 100%;
+    }
+    
+    .message {
+        font-size: 1.1rem;
+    }
+    
+    .action-btn {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
 }

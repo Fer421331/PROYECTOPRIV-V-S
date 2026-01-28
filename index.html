@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para ti 💐</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti Mi Linda Vale/Sofi</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="header">
+        <h1 class="title">Para ti Mi Linda Vale/Sofi</h1>
+    </div>
+    
+    <div class="bouquet-container">
+        <!-- Decoración de hojas -->
+        <div class="decoration-leaf" style="top: 50px; left: 10%;"></div>
+        <div class="decoration-leaf" style="top: 100px; right: 15%;"></div>
+        <div class="decoration-leaf" style="bottom: 150px; left: 15%;"></div>
+        <div class="decoration-leaf" style="bottom: 80px; right: 10%;"></div>
+        
+        <!-- Persona sosteniendo el ramo -->
+        <div class="person">
+            <div class="person-head"></div>
+            <div class="person-body"></div>
+            <div class="person-arm left-arm"></div>
+            <div class="person-arm right-arm"></div>
+        </div>
+        
+        <!-- Ramo de flores -->
+        <div class="bouquet" id="bouquet">
+            <!-- Flores se generarán con JavaScript -->
+            <div class="bouquet-wrapper">
+                <div class="wrapper-fold"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button class="action-btn" id="actionBtn">Presióname varias veces</button>
+        <div class="counter" id="counter">Presiona el botón para ver mensajes</div>
+    </div>
+    
+    <div class="messages-container" id="messagesContainer">
+        <div class="left-messages" id="leftMessages">
+            <!-- Mensajes izquierda -->
+        </div>
+        <div class="right-messages" id="rightMessages">
+            <!-- Mensajes derecha -->
+        </div>
+    </div>
+    
+    <div class="hearts" id="heartsContainer"></div>
+    
+    <footer>
+        <p>Este ramo de rosas rojas y rosadas es solo un pequeño reflejo de lo que siento por ti ❤</p>
+        <p>Sigue presionando el botón para descubrir más mensajes</p>
+    </footer>
 
-<h1>Para ti mi linda Vale / Sofi 💖</h1>
-
-<div class="bouquet" id="bouquet">
-
-  <!-- MENSAJES -->
-  <div class="msg left" id="leftMsg"></div>
-  <div class="msg right" id="rightMsg"></div>
-
-  <!-- ROSAS -->
-  <div class="flower rose r1">
-    <span class="center"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-  </div>
-
-  <div class="flower rose pink r2">
-    <span class="center"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-  </div>
-
-  <div class="flower rose r3">
-    <span class="center"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-  </div>
-
-  <div class="flower rose pink r4">
-    <span class="center"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-  </div>
-
-  <!-- TALLOS -->
-  <div class="stems"></div>
-
-  <!-- HOJAS -->
-  <div class="leaf l1"></div>
-  <div class="leaf l2"></div>
-
-</div>
-
-<button id="btn">Presióname varias veces 💘</button>
-
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
